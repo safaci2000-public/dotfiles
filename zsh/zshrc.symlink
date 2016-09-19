@@ -1,6 +1,8 @@
 #!/bin/zsh
 # shortcut to this dotfiles path is $ZSH
+source <(antibody init)
 export ZSH="$HOME/.dotfiles"
+
 
 # your project folder that we can `c [tab]` to
 export PROJECTS="$HOME/Code"
@@ -39,7 +41,12 @@ for file in ${(M)config_files:#*/completion.zsh}; do
 done
 
 unset config_files updated_at
+set -o vi 
 
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
 [[ -a ~/.localrc ]] && source ~/.localrc
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+PATH=/usr/local/Cellar/vim/8.0.0002/bin/vim:$PATH

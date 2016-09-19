@@ -1,4 +1,24 @@
 #!/bin/sh
+#
+function pushup() 
+{
+   git push gerrit HEAD:refs/for/release-2016-$1
+}
+
+function pushbranch()
+{
+    git push origin --force $(git branch 2>/dev/null  | grep "*" | sed -e 's/* //')
+}
+
+
+alias pushmaster='git push origin master:master'
+alias pushjujube='git push gerrit HEAD:refs/for/release-2015-jujube'
+alias pushgus='git push gerrit HEAD:refs/for/release-2014-gus'
+alias pushgerrit='git push gerrit HEAD:refs/for/master'
+alias rebasem='git rebase -i origin/master'
+alias gitSave="git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - -a --amend"
+alias gitHard="git fetch origin && git reset --hard origin/master"
+
 alias gl='git pull --prune'
 alias glg="git log --graph --decorate --oneline --abbrev-commit"
 alias glga="glg --all"

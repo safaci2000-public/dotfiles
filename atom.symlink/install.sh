@@ -2,7 +2,9 @@
 if test "$(which apm)"; then
   apm upgrade --confirm false
 
+#    vim-mode
   modules="
+    vim-mode-plus
     atom-beautify
     atom-wrap-in-tag
     color-picker
